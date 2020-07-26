@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  
+  <!-- Fa Fa Icons -->    
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <script
+  src="https://code.jquery.com/jquery-3.5.0.min.js"
+  integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+  crossorigin="anonymous"></script>
+
+
+  <style>
+    .row {
+      margin-right: -15px;
+      margin-left: -15px;
+    }
+    .text-center {
+      text-align: center;
+    }
+    .main-content span{
+      color: #3C99E8;
+    }
+
+    /*-------------Heading------------------------*/
+
+    .calcHeading {
+      width: 100%;
+      background-color: #3C99E8;
+      margin-bottom: 10px;
+      padding: 20px;
+    }
+    .calcHeading i {
+      color: #fff;
+    }
+    .calcHeading span{
+      color: white;
+    }
+
+    /*------------ Form Content ----------------------*/
+
+    #monthlyBill {
+      background: url(images/icon_electric.png) no-repeat scroll 7px 7px;
+      background-size: 25px 25px;
+      padding-left: 40px;
+    }
+    #monthlyUnits {
+      background: url(images/icon_electric.png) no-repeat scroll 7px 7px;
+      background-size: 25px 25px;
+      padding-left: 40px;
+    }
+
+    .or h4 {
+      margin: 15px 0!important;
+      color: #3C99E8;
+      font-size: 18px;
+      letter-spacing: 1px;
+      font-weight: 700;
+      text-align: center;
+    }
+    .calculatorForm input[type="text"], .calculatorForm input[type="email"], .calculatorForm textarea, .calculatorForm select {
+      width: 100%!important;
+      border: 1px solid #333!important;
+      padding: 10px;
+      margin: 7px 0;
+      color: #000;
+    }
+    input {
+      -webkit-writing-mode: horizontal-tb !important;
+      text-rendering: auto;
+      color: -internal-light-dark-color(black, white);
+      letter-spacing: normal;
+      word-spacing: normal;
+      text-transform: none;
+      text-indent: 0px;
+      text-shadow: none;
+      display: inline-block;
+      text-align: start;
+      -webkit-appearance: textfield;
+      background-color: -internal-light-dark-color(white, black);
+      -webkit-rtl-ordering: logical;
+      cursor: text;
+      margin: 0em;
+      font: 400 13.3333px Arial;
+      padding: 1px 0px;
+      border-width: 2px;
+      border-style: inset;
+      border-color: initial;
+      border-image: initial;
+    }
+    .calculatorTableContainer {
+      display: none;
+    }
+    .calculatorTableContainer h4 {
+      color: #3C99E8;
+    }
+    .calculatorTable1{
+      display: none;
+    }
+    .calculatorTable2{
+      display: none;
+    }
+    .calculatorTable3{
+      display: none;
+    }
+    .chart-container{
+      display: none;
+    }
+    h4, .h4 {
+      font-size: 18px;
+    }
+    h4, .h4, h5, .h5, h6, .h6 {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+      font-family: inherit;
+      font-weight: 500;
+      line-height: 1.1;
+      color: inherit;
+    }
+    h4 {
+      display: block;
+      margin-block-start: 1.33em;
+      margin-block-end: 1.33em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+      font-weight: bold;
+    }
+    .calcFooter {
+      display: none;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: #f5f5f5;
+      margin-bottom: 20px;
+    }
+    .calcFooter p {
+      margin-bottom: 5px;
+      font-weight: 700;
+    }
+
+    .calcFooter input[type="text"], .calcFooter input[type="number"] {
+      border-style: none;
+      border-width: 0;
+      border-bottom: 1px solid #333!important;
+      padding: 5px 5px 0!important;
+      background-color: #f5f5f5;
+      color: #000;
+      margin-left: 10px;
+      width: 150px;
+      font-weight: 400;
+    }
+    button, input, optgroup, select, textarea {
+      color: inherit;
+      font: inherit;
+      margin: 0;
+    }
+    .footCalc {
+      font-size: 12px;
+      color: #00aff0;
+      margin-bottom: 10px;
+    }
+    p {
+      margin: 0 0 10px;
+    }
+    * {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+    p {
+      display: block;
+      margin-block-start: 1em;
+      margin-block-end: 1em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+    }
+    /*------------Button---------------------*/
+    .buttonCalc {
+      width: 100%!important;
+      background-color: #3C99E8;
+      border: 2px solid #3C99E8;
+      color: #fff;
+      padding: 10px 0;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 18px;
+      margin: 4px 2px;
+      -webkit-transition-duration: .4s;
+      transition-duration: .4s;
+      cursor: pointer;
+    }
+
+    .buttonCalc:hover{
+
+      background-color: transparent;
+      border: 2px solid #3C99E8;
+      color: #3C99E8;
+      font-weight: bold;
+    }
+    .calcClose{
+      display: none;
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <div class="main-content">
+    <table cellspacing="5" cellpadding="5" border="0" width="100%" height="300">
+      <tr >
+        <td width="50%" height="250" valign="middle" align="right"><h3><font face="Verdana, Geneva, sans-serif">Use Our <span>SAVINGS CALCULATOR</span><br>
+        and see your savings over 15 years</font></h3></td>
+        <td align="left" width="200" height="280"><button type="button" class="btn btn-light"  data-toggle="modal" data-target="#calcModal"><img alt="Solar Calculator" width="120" height="150" src="images/calculator1.png"></button></td>
+      </tr>
+    </table>
+  </div>
+  <!-- Button trigger modal -->
+  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#calcModal">
+    Launch demo modal
+  </button>-->
+
+  <!-- Modal -->
+  <div class="modal fade bd-example-modal-lg" id="calcModal" tabindex="-1" role="dialog" aria-labelledby="Calculator" aria-hidden="true" >
+    <div class="modal-dialog " role="document">
+      <div class="modal-content">
+        <div id="mdlCalc" class="modal-body">
+          <div class="row-fluid">
+            <div class="theCalcy">
+
+              <div class="calculatorForm">
+                <!-- Form Heading -->
+                <div class="row">
+                  <div class="calcHeading">
+                    <h2 class="text-center"><i class="fa fa-credit-card-alt" aria-hidden="true" ></i> &nbsp; <span>Calculate Your Savings</span></h2>
+                  </div>
+                </div>
+
+                <!-- Form Body -->
+                <div class="row">
+                  <div class="col-sm-5">
+                    <a href="#" class="tooltip-test" title="Monthly Bill in RS">
+                      <input type="text" placeholder="Monthly Bill in RS" id="monthlyBill"></a>
+                    </div>
+                    <div class="col-sm-2">
+                      <div class="or">
+                        <h4>OR</h4>
+                      </div>
+                    </div>
+                    <div class="col-sm-5">
+                      <a href="#" class="tooltip-test" title="Monthly Bill in Units">
+                        <input type="text"  placeholder="Monthly Bill in Units" id="monthlyUnits"></a>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                  <!-- <div class="col-sm-6">
+                    <select id="location">
+                      <option selected="" disabled="">Location</option>
+                      <option value="2">Gujarat</option><option value="3">Karnataka</option><option value="4">Maharashtra</option><option value="5">Mumbai</option><option value="6">Tamil Nadu</option><option value="7">Telangana</option><option value="8">Andhra Pradesh</option></select>
+                    </div> -->
+                    <div class="col-sm-12">
+                      <select id="consumerType">
+                        <option selected="" disabled="">Consumer Type</option>
+                        <option value="industrial">Industrial</option>
+                        <option value="residential">Residential</option>
+                        <option value="commercial">Commercial</option>
+                        <option value="educational">Educational Institute</option>
+                        <option value="hospital">Hospital</option>
+                        <option value="corporate">Corporate</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- Button -->
+                  <div class="row">
+                   <div class="col-sm-6">
+                     <button type="button" class="buttonCalc" onclick="calc()">Calculate</button>
+                   </div>
+                   <div class="col-sm-6"> 
+                    <button type="button" class="buttonCalc" data-dismiss="modal">Cancel</button>
+                  </div>       
+                </div>
+              </div>
+              <!-- Form End -->
+
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-sm-12 calculatorTableContainer">
+                    <h4>System information</h4>
+                    <table class="table table-bordered calculatorTable1">
+                      <tbody><tr>
+                        <th>System Capacity</th>
+                        <td class="systemCap"></td>
+                      </tr>
+                      <tr>
+                        <th>Space Required</th>
+                        <td class="spaceReq"></td>
+                      </tr>
+                      <tr>
+                        <th>Price</th>
+                        <td class="systemCost"></td>
+                      </tr>
+                    </tbody></table>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-12 calculatorTableContainer">
+                    <h4>Generation data</h4>
+                    <table class="table table-bordered calculatorTable2">
+                      <tbody><tr>
+                        <th>Monthly units generated</th>
+                        <td class="monUnGen"></td>
+                      </tr>
+                      <tr>
+                        <th>Yearly units generated</th>
+                        <td class="yearUnGen"></td>
+                      </tr>
+                    </tbody></table>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-12 calculatorTableContainer">
+                    <h4>Savings calculation</h4>
+                    <table class="table table-bordered calculatorTable3">
+                      <tbody><tr>
+                        <th>Average yearly savings</th>
+                        <td class="avgYearSave"></td>
+                      </tr>
+                      <tr>
+                        <th>Payback Period</th>
+                        <td class="payPer"></td>
+                      </tr>
+                    </tbody></table>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-12 calcFooter">
+                    <p> Contact Us for More Details!<!-- "I want Solpath to contact me with more details." <br>"My phone no. is "<input type="number" id="calcEnqId1" minlength="10" maxlength="10">" and mail id is"<input type="text" id="calcEnqId"></p>
+                    <p class="footCalc">"*I want to know more about system cost, financing options & payback period" -->
+                    </p>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <!-- <div class="col-sm-6">
+                    <button class="buttonCalc calcClose" onclick="calcDataSubmit()">Send</button>
+                  </div> -->
+                  <div class="col-sm-3"></div>
+                  <div class="col-sm-6">
+                    <button class="buttonCalc calcClose" id="calcCloseBtn" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+
+                <!-- Chart/Graph -->
+                <!-- <div class="row">
+                  <div class="col-sm-6">
+                    <div class="chart-container">
+                      <div id="chartContainer" style="height:300px"></div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="chart-container">
+                      <div id="chartContainer1" style="height:300px"></div>
+                    </div>
+                  </div>
+                </div> -->
+
+              </div>
+              <!-- Container Fluid ends -->
+            </div>
+          </div>
+          <!-- Row Fluid ends -->
+          <script>
+            /*<![CDATA[*/
+            
+
+
+            function calc()
+             {
+               
+               //  console.log(monthlyUnits);
+               //  console.log(monthlyBill);
+               // console.log('fuction is clled!');              
+               //  //var loc = $('#location').val();
+                var custype = $('#consumerType').val();
+                // if (loc == null) {
+                //   alert('Select location');
+                // } else if (custype == null) {
+                //   alert('Select Consumer Type');
+                // }
+                if (custype == null) {
+                  alert('Select Consumer Type');
+                }
+                $(".chart-container").css("display", "block");
+                
+                if ($("#monthlyUnits").val() != "")
+                {
+                  var monthlyUnits = $("#monthlyUnits").val();
+                }
+
+                 else 
+                 {
+                  if ($("#monthlyBill").val() != "") {
+                    var monthlyBill = $("#monthlyBill").val();
+                  } else {
+                    alert("Please enter either bill or units");
+                  }
+                }
+
+
+                $(".calculatorTable1").css("display", "table");
+                $(".calculatorTable2").css("display", "table");
+                $(".calculatorTable3").css("display", "table");
+                $(".calculatorTableContainer").css("display", "block");
+                $(".calcClose").css("display", "block");
+                $(".calcFooter").css("display", "block");
+                
+                $.ajax({
+                  url: 'class.php',
+                  type: 'post',
+                  data: {location:custype,monthlyUnits:monthlyUnits,monthlyBill:monthlyBill},
+                  
+                  
+                  success: function(data)
+                  {
+
+                    console.log('done');
+                    console.log(data);
+                    // alert(data.join(' '));
+                    // var array = JSON.stringify(data);
+                    // console.log(array);
+                    // console.log(array.)
+                    var json = jQuery.parseJSON(data);
+                    console.log(json.systemCap);
+                    // selecting values from response Object
+                    var systemCap = json.systemCap + " kW";
+                    var spaceReq = json.spaceReq + " Sqft";
+                    var systemCost = "Rs "+ json.sysCost;
+                    var monUnGen = json.monUnitsGen + " kWh";
+                    var yearUnGen = json.yearUnitsGen + " kWh";
+                    var avgYearSave = "Rs "+ json.yearlySavings;
+                    var payPer = json.paybackPeriod + " year";
+                    
+                    // setting values
+                    $('.systemCap').text(systemCap);
+                    $('.spaceReq').text(spaceReq);
+                    $('.systemCost').text(systemCost);
+                    $('.monUnGen').text(monUnGen);
+                    $('.yearUnGen').text(yearUnGen);
+                    $('.avgYearSave').text(avgYearSave);
+                    $('.payPer').text(payPer);
+                   }
+
+                     // error: function(jqxhr, status, exception) 
+                     // {
+                     //     alert('Exception:', exception);
+                     // }
+                });
+
+              }
+
+
+              /*]]>*/
+            </script>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      function callCalc(bill=0)
+      {
+        if(bill>0)
+        {
+          $("#mdlCalc").load("file:///E:/desktop/WEBDEVELOPMENT/solapth/calculator.html?bill="+bill,function(){$('#calcModal').modal('show');});
+        }
+        else
+        {
+          $("#mdlCalc").load("file:///E:/desktop/WEBDEVELOPMENT/solapth/calculator.html",function(){$('#calcModal').modal('show');});
+        }
+      }
+    </script>
+    <script type="text/javascript">
+      function callCalc()
+      {
+        $("#mdlCalc").load("file:///E:/desktop/WEBDEVELOPMENT/solapth/calculator.html",function(){$("#calcModal").modal("show")})
+      };
+    </script>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+  </body>
+  </html>
