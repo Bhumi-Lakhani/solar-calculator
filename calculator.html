@@ -485,18 +485,18 @@
       {
         if(bill>0)
         {
-          $("#mdlCalc").load("file:///E:/desktop/WEBDEVELOPMENT/solapth/calculator.html?bill="+bill,function(){$('#calcModal').modal('show');});
+          $("#mdlCalc").load("../calculator.html?bill="+bill,function(){$('#calcModal').modal('show');});
         }
         else
         {
-          $("#mdlCalc").load("file:///E:/desktop/WEBDEVELOPMENT/solapth/calculator.html",function(){$('#calcModal').modal('show');});
+          $("#mdlCalc").load("../calculator.html",function(){$('#calcModal').modal('show');});
         }
       }
     </script>
     <script type="text/javascript">
       function callCalc()
       {
-        $("#mdlCalc").load("file:///E:/desktop/WEBDEVELOPMENT/solapth/calculator.html",function(){$("#calcModal").modal("show")})
+        $("#mdlCalc").load("../calculator.html",function(){$("#calcModal").modal("show")})
       };
     </script>
 
